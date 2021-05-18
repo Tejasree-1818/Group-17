@@ -3,7 +3,7 @@ package com.example.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
+//wishlist entity
 public class Wishlist {
 	
 	@OneToOne(cascade=CascadeType.ALL)

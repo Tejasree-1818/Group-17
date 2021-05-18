@@ -1,6 +1,6 @@
 package com.example.entity;
 
-
+//buyer entity
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

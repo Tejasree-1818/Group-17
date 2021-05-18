@@ -1,5 +1,5 @@
 package com.example.entity;
-
+//cart entity
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
