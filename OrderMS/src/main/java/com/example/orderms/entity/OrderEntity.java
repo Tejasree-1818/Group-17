@@ -15,7 +15,7 @@ public class OrderEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private String orderId;
 	private String buyerId;
-	private int amount;
+	private Integer amount;
 	private Date date;
 	private String address;
 	private String status;
@@ -31,10 +31,10 @@ public class OrderEntity {
 	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
 	}
-	public int getAmount() {
+	public Integer getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 	public Date getDate() {
