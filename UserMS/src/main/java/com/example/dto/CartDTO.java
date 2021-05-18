@@ -2,7 +2,7 @@ package com.example.dto;
 
 import com.example.entity.Buyer;
 
-public class cartDTO {
+public class CartDTO {
 	
 	private Buyer buyerId;
 	private Integer quantity;
