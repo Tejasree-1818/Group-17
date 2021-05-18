@@ -5,7 +5,7 @@ import java.util.Date;
 public class OrderDTO {
 	private String orderId;
 	private String buyerId;
-	private int amount;
+	private Integer amount;
 	private Date date;
 	public String getOrderId() {
 		return orderId;
@@ -19,10 +19,10 @@ public class OrderDTO {
 	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
 	}
-	public int getAmount() {
+	public Integer getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 	public Date getDate() {
