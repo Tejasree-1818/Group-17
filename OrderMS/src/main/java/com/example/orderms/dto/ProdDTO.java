@@ -1,20 +1,18 @@
-package com.example.productms.dto;
+package com.example.orderms.dto;
 
-import java.util.Optional;
 
-import com.example.productms.entity.ProdEntity;
 
 public class ProdDTO {
     private String prodId;
 	private String prodName;
-	private float price;
-	private int stock;
+	private Float price;
+	private Integer stock;
 	private String description;
 	private String image;
 	private String sellerId;
 	private String category;
 	private String subcategory;
-	private float productRating;
+	private Float productRating;
 	public String getProdId() {
 		return prodId;
 	}
@@ -31,16 +29,16 @@ public class ProdDTO {
 	public String getDescription() {
 		return description;
 	}
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 	public void setDescription(String description) {
@@ -70,24 +68,18 @@ public class ProdDTO {
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
-	public float getProductRating() {
+	public Float getProductRating() {
 		return productRating;
 	}
-	public void setProductRating(float productRating) {
+	public void setProductRating(Float productRating) {
 		this.productRating = productRating;
 	}
-	public static ProdDTO valueOf(Optional<ProdEntity> prodEntity) {
-		ProdDTO pD=new ProdDTO();
-		pD.setProdId(prodEntity.get().getProdId());
-		pD.setCategory(prodEntity.get().getCategory());
-		pD.setDescription(prodEntity.get().getDescription());
-		pD.setImage(prodEntity.get().getImage());
-		pD.setPrice(prodEntity.get().getPrice());
-		pD.setSubcategory(prodEntity.get().getSubcategory());
-		pD.setStock(prodEntity.get().getStock());
-		pD.setProductRating(prodEntity.get().getProductRating());
-		pD.setSellerId(prodEntity.get().getSellerId());
-		pD.setProdName(prodEntity.get().getProdName());
-		return pD;
+	@Override
+	public String toString() {
+		return "ProdDTO [prodId=" + prodId + ", prodName=" + prodName + ", price=" + price + ", stock=" + stock
+				+ ", description=" + description + ", image=" + image + ", sellerId=" + sellerId + ", category="
+				+ category + ", subcategory=" + subcategory + ", productRating=" + productRating + "]";
 	}
+	
+	
 }

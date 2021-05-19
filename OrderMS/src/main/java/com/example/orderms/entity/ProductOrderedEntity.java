@@ -11,7 +11,7 @@ public class ProductOrderedEntity {
     public ProductOrderedEntity() {
 		super();
 	}
-	public ProductOrderedEntity(CompPrimaryEntity compPrimaryKey, String sellerId, int quantity) {
+	public ProductOrderedEntity(CompPrimaryEntity compPrimaryKey, String sellerId, Integer quantity) {
 		super();
 		this.compPrimaryKey = compPrimaryKey;
 		this.sellerId = sellerId;
@@ -20,7 +20,7 @@ public class ProductOrderedEntity {
 	@EmbeddedId
     private CompPrimaryEntity compPrimaryKey;
     private String sellerId;
-    private int quantity;
+    private Integer quantity;
 	public CompPrimaryEntity getcompPrimaryKey() {
 		return compPrimaryKey;
 	}
@@ -33,10 +33,10 @@ public class ProductOrderedEntity {
 	public void setSellerId(String sellerId) {
 		this.sellerId = sellerId;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
     

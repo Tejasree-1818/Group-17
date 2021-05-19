@@ -8,5 +8,5 @@ public interface ProdService {
 	public String addProductsToWhishlist(ProdDTO prodDTO) throws Exception;
 	public String removeProductsFromWhishlist(String prodId) throws Exception;
 	public List<ProdDTO> getProductByCategory(String category) throws Exception;
-	//public ProdDTO getProductByName(String prodName) throws Exception;
+	public ProdDTO getProductByName(String prodName) throws Exception;
 }

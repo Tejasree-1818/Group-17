@@ -3,7 +3,8 @@ package com.example.orderms.entity;
 import java.io.Serializable;
 
 public class CompPrimaryEntity implements Serializable{
-    private String buyerId;
+    
+	private String buyerId;
     private String prodId;
 	public String getBuyerId() {
 		return buyerId;
