@@ -26,7 +26,7 @@ public class ProdServiceImpl implements ProdService{
     		if(ProdValidator.ValidateProd(prodDTO)) {
     			ProdEntity p=new ProdEntity();
     			p.setProdId(prodDTO.getProdId());
-    			p.setProdName(prodDTO.getProdName());
+    			p.setProductName(prodDTO.getProductName());
     			p.setDescription(prodDTO.getDescription());
     			p.setImage(prodDTO.getImage());
     			p.setCategory(prodDTO.getCategory());
@@ -36,7 +36,7 @@ public class ProdServiceImpl implements ProdService{
     			p.setProductRating(prodDTO.getProductRating());
     			p.setSellerId(prodDTO.getSellerId());
     			System.out.println(prodRepo.save(p));
-    			return p.getProdId();
+    			return p.getprodId();
     		}
     	}
     	catch(Exception e) {
@@ -64,8 +64,8 @@ public class ProdServiceImpl implements ProdService{
 			throw new Exception("Product is unavailable for Such Category");
         for(ProdEntity pE:c) {
         	ProdDTO pD1=new ProdDTO();
-        	pD1.setProdId(pE.getProdId());
-        	pD1.setProdName(pE.getProdName());
+        	pD1.setProdId(pE.getprodId());
+        	pD1.setProdName(pE.getProductName());
         	pD1.setCategory(pE.getCategory());
         	pD1.setSubcategory(pE.getSubcategory());
         	pD1.setProductRating(pE.getProductRating());
@@ -86,7 +86,7 @@ public class ProdServiceImpl implements ProdService{
 			throw new Exception("Product is unavailable with that name");
        
         ProdDTO pD=new ProdDTO();
-		pD.setProdId(c.get().getProdId());
+		pD.setProdId(c.get().getprodId());
 		pD.setCategory(c.get().getCategory());
 		pD.setDescription(c.get().getDescription());
 		pD.setImage(c.get().getImage());
@@ -95,7 +95,7 @@ public class ProdServiceImpl implements ProdService{
 		pD.setStock(c.get().getStock());
 		pD.setProductRating(c.get().getProductRating());
 		pD.setSellerId(c.get().getSellerId());
-		pD.setProdName(c.get().getProdName());
+		pD.setProdName(c.get().getProductName());
 		return pD;
         	
    

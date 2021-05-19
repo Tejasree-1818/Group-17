@@ -12,26 +12,26 @@ public class ProdEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private String prodId;
-	private String prodName;
-	private float price;
-	private int stock;
+	private String productName;
+	private Float price;
+	private Integer stock;
 	private String description;
 	private String image;
 	private String sellerId;
 	private String category;
 	private String subcategory;
-	private float productRating;
-	public String getProdId() {
+	private Float productRating;
+	public String getprodId() {
 		return prodId;
 	}
 	public void setProdId(String prodId) {
 		this.prodId = prodId;
 	}
-	public String getProdName() {
-		return prodName;
+	public String getProductName() {
+		return productName;
 	}
-	public void setProdName(String prodName) {
-		this.prodName = prodName;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	
 	public String getDescription() {
@@ -61,25 +61,25 @@ public class ProdEntity {
 	public String getSubcategory() {
 		return subcategory;
 	}
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
-	public float getProductRating() {
+	public Float getProductRating() {
 		return productRating;
 	}
-	public void setProductRating(float productRating) {
+	public void setProductRating(Float productRating) {
 		this.productRating = productRating;
 	}
 }

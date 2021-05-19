@@ -4,7 +4,7 @@ import com.example.productms.dto.ProdDTO;
 
 public class ProdValidator {
    public static boolean ValidateProd(ProdDTO prodDTO) throws Exception{
-	   if(!isValidName(prodDTO.getProdName()))
+	   if(!isValidName(prodDTO.getProductName()))
 		   throw new Exception("ProductName is not valid ");
 	   else if(!isValidDescr(prodDTO.getDescription()))
 		   throw new Exception("Description Should be of atleast 500 characters");
