@@ -7,7 +7,7 @@ public class SellerDTO {
 	private Integer sellerId;
 	private String name;
 	private String emailId;
-	private long phoneNumber;
+	private String phoneNumber;
 	private String password;
 	private Boolean isActive;
 	public Integer getSellerId() {
@@ -28,10 +28,10 @@ public class SellerDTO {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getPassword() {

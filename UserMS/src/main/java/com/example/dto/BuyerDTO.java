@@ -4,7 +4,7 @@ public class BuyerDTO {
 	private Integer buyerId;
 	private String name;
 	private String emailId;
-	private Long phoneNumber;
+	private String phoneNumber;
 	private String password;
 	private Boolean isPrivilaged;
 	private Float rewardPoints;
@@ -27,10 +27,10 @@ public class BuyerDTO {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getPassword() {
