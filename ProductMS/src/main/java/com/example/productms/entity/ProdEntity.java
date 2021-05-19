@@ -12,7 +12,9 @@ public class ProdEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private String prodId;
+
 	private String productName;
+
 	private Float price;
 	private Integer stock;
 	private String description;
@@ -21,6 +23,7 @@ public class ProdEntity {
 	private String category;
 	private String subcategory;
 	private Float productRating;
+
 	public String getprodId() {
 		return prodId;
 	}

@@ -6,7 +6,11 @@ import com.example.productms.entity.ProdEntity;
 
 public class ProdDTO {
     private String prodId;
+
 	private String productName;
+
+	
+
 	private Float price;
 	private Integer stock;
 	private String description;
