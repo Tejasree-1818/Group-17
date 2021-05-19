@@ -12,7 +12,7 @@ public class ProdEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private String prodId;
-
+    
 	private String productName;
 
 	private Float price;

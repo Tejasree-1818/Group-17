@@ -7,12 +7,12 @@ import javax.persistence.Table;
 import com.example.productms.entity.CompPrimaryEntity;
 
 @Entity
-@Table(name="SubscribedProduct")
+@Table(name="subscribedProduct")
 public class SubscribedProdEntity {
 	@EmbeddedId
     private CompPrimaryEntity compPrimaryKey;
 	private Integer quantity;
-	public SubscribedProdEntity(CompPrimaryEntity compPrimaryKey, int quantity) {
+	public SubscribedProdEntity(CompPrimaryEntity compPrimaryKey, Integer quantity) {
 		super();
 		this.compPrimaryKey = compPrimaryKey;
 		this.quantity = quantity;
