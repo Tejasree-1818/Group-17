@@ -14,7 +14,7 @@ public class ProdEntity {
     private String prodId;
 	private String prodName;
 	private float price;
-	private int stock;
+	private Integer stock;
 	private String description;
 	private String image;
 	private String sellerId;
@@ -61,25 +61,25 @@ public class ProdEntity {
 	public String getSubcategory() {
 		return subcategory;
 	}
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
-	public float getProductRating() {
+	public Float getProductRating() {
 		return productRating;
 	}
-	public void setProductRating(float productRating) {
+	public void setProductRating(Float productRating) {
 		this.productRating = productRating;
 	}
 }
