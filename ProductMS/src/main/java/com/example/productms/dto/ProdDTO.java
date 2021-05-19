@@ -11,6 +11,12 @@ public class ProdDTO {
 
 	
 
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	private Float price;
 	private Integer stock;
 	private String description;
@@ -25,12 +31,7 @@ public class ProdDTO {
 	public void setProdId(String prodId) {
 		this.prodId = prodId;
 	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProdName(String productName) {
-		this.productName = productName;
-	}
+	
 	
 	public String getDescription() {
 		return description;
@@ -91,7 +92,7 @@ public class ProdDTO {
 		pD.setStock(prodEntity.get().getStock());
 		pD.setProductRating(prodEntity.get().getProductRating());
 		pD.setSellerId(prodEntity.get().getSellerId());
-		pD.setProdName(prodEntity.get().getProductName());
+		pD.setProductName(prodEntity.get().getProductName());
 		return pD;
 	}
 }
