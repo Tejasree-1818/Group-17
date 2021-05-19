@@ -65,7 +65,7 @@ public class ProdServiceImpl implements ProdService{
         for(ProdEntity pE:c) {
         	ProdDTO pD1=new ProdDTO();
         	pD1.setProdId(pE.getprodId());
-        	pD1.setProdName(pE.getProductName());
+        	pD1.setProductName(pE.getProductName());
         	pD1.setCategory(pE.getCategory());
         	pD1.setSubcategory(pE.getSubcategory());
         	pD1.setProductRating(pE.getProductRating());
@@ -95,7 +95,7 @@ public class ProdServiceImpl implements ProdService{
 		pD.setStock(c.get().getStock());
 		pD.setProductRating(c.get().getProductRating());
 		pD.setSellerId(c.get().getSellerId());
-		pD.setProdName(c.get().getProductName());
+		pD.setProductName(c.get().getProductName());
 		return pD;
         	
    
