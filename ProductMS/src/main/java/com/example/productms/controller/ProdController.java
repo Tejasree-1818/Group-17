@@ -48,7 +48,7 @@ public class ProdController {
     	}
     }
     @GetMapping(value="/searchby/category/{category}")
-    public ResponseEntity<List<ProdDTO>> searchByCategory(@PathVariable String category) {
+    public ResponseEntity<List<ProdDTO>> getProductByCategory(@PathVariable String category) {
     	List<ProdDTO> pD=new ArrayList<>();
     	try {
     		pD=prodService.getProductByCategory(category);
@@ -60,6 +60,19 @@ public class ProdController {
     	}
     	
     }
+    @GetMapping(value="/searchby/productname/{category}")
+    public ResponseEntity<ProdDTO> getProductByName(@PathVariable String name){
+    	ProdDTO pD=null;
+    	try {
+    		pD=prodService.getProductByName(name);
+    	}
+    	catch(Exception ex) {
+    		ex.printStackTrace();
+    		throw new ResponseStatusException(HttpStatus.NOT_FOUND,envi.getProperty(ex.getLocalizedMessage()),ex);
+    	}
+    	return new ResponseEntity<ProdDTO>(pD,HttpStatus.OK);
+    }
+    
     
     
 }

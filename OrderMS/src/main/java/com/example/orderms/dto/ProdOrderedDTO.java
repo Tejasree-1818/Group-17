@@ -21,13 +21,13 @@ public class ProdOrderedDTO {
 	public void setSellerId(String sellerId) {
 		this.sellerId = sellerId;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	private String sellerId;
-    private int quantity;
+    private Integer quantity;
 
 }

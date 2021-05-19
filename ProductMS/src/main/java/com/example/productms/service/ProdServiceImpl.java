@@ -26,7 +26,7 @@ public class ProdServiceImpl implements ProdService{
     		if(ProdValidator.ValidateProd(prodDTO)) {
     			ProdEntity p=new ProdEntity();
     			p.setProdId(prodDTO.getProdId());
-    			p.setProdName(prodDTO.getProdName());
+    			p.setProductName(prodDTO.getProductName());
     			p.setDescription(prodDTO.getDescription());
     			p.setImage(prodDTO.getImage());
     			p.setCategory(prodDTO.getCategory());
@@ -36,7 +36,7 @@ public class ProdServiceImpl implements ProdService{
     			p.setProductRating(prodDTO.getProductRating());
     			p.setSellerId(prodDTO.getSellerId());
     			System.out.println(prodRepo.save(p));
-    			return p.getProdId();
+    			return p.getprodId();
     		}
     	}
     	catch(Exception e) {
@@ -64,8 +64,8 @@ public class ProdServiceImpl implements ProdService{
 			throw new Exception("Product is unavailable for Such Category");
         for(ProdEntity pE:c) {
         	ProdDTO pD1=new ProdDTO();
-        	pD1.setProdId(pE.getProdId());
-        	pD1.setProdName(pE.getProdName());
+        	pD1.setProdId(pE.getprodId());
+        	pD1.setProdName(pE.getProductName());
         	pD1.setCategory(pE.getCategory());
         	pD1.setSubcategory(pE.getSubcategory());
         	pD1.setProductRating(pE.getProductRating());
@@ -80,28 +80,27 @@ public class ProdServiceImpl implements ProdService{
         
 
     }
-//	public ProdDTO getProductByName(String prodName) throws Exception{
-//		List<ProdEntity> c=prodRepo.findByProductName(prodName);
-//
-//       //ProdDTO pD=new ProdDTO();
-//        if(c.isEmpty())
-//			throw new Exception("Product is unavailable for Such Category");
-//        for(ProdEntity pE:c) {
-//        	ProdDTO pD1=new ProdDTO();
-//        	pD1.setProdId(pE.getProdId());
-//        	pD1.setProdName(pE.getProdName());
-//        	pD1.setCategory(pE.getCategory());
-//        	pD1.setSubcategory(pE.getSubcategory());
-//        	pD1.setProductRating(pE.getProductRating());
-//        	pD1.setPrice(pE.getPrice());
-//        	pD1.setImage(pE.getImage());
-//        	pD1.setStock(pE.getStock());
-//        	pD1.setSellerId(pE.getSellerId());
-//        	
-//        }
-//       
-
-	}
+	public ProdDTO getProductByName(String prodName) throws Exception{
+		Optional<ProdEntity> c=prodRepo.findByProductName(prodName);
+        if(c.isEmpty())
+			throw new Exception("Product is unavailable with that name");
+       
+        ProdDTO pD=new ProdDTO();
+		pD.setProdId(c.get().getprodId());
+		pD.setCategory(c.get().getCategory());
+		pD.setDescription(c.get().getDescription());
+		pD.setImage(c.get().getImage());
+		pD.setPrice(c.get().getPrice());
+		pD.setSubcategory(c.get().getSubcategory());
+		pD.setStock(c.get().getStock());
+		pD.setProductRating(c.get().getProductRating());
+		pD.setSellerId(c.get().getSellerId());
+		pD.setProdName(c.get().getProductName());
+		return pD;
+        	
+   
+    }
+}
 	
 
 

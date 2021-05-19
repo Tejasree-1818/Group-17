@@ -3,7 +3,7 @@ package com.example.productms.dto;
 public class SubscribedProdDTO {
      private String buyerId;
      private String prodId;
-     private String quantity;
+     private Integer quantity;
 	public String getBuyerId() {
 		return buyerId;
 	}
@@ -16,10 +16,10 @@ public class SubscribedProdDTO {
 	public void setProdId(String prodId) {
 		this.prodId = prodId;
 	}
-	public String getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
      

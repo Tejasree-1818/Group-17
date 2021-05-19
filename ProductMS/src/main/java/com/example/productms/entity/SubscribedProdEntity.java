@@ -11,7 +11,7 @@ import com.example.productms.entity.CompPrimaryEntity;
 public class SubscribedProdEntity {
 	@EmbeddedId
     private CompPrimaryEntity compPrimaryKey;
-	private int quantity;
+	private Integer quantity;
 	public SubscribedProdEntity(CompPrimaryEntity compPrimaryKey, int quantity) {
 		super();
 		this.compPrimaryKey = compPrimaryKey;
@@ -27,10 +27,10 @@ public class SubscribedProdEntity {
 	public void setCompPrimaryKey(CompPrimaryEntity compPrimaryKey) {
 		this.compPrimaryKey = compPrimaryKey;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 	

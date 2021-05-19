@@ -1,20 +1,10 @@
-package com.example.productms.entity;
+package com.example.orderms.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="Product")
-public class ProdEntity {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
+public class ProdDTO {
     private String prodId;
-
-	private String productName;
-
+	private String prodName;
 	private Float price;
 	private Integer stock;
 	private String description;
@@ -23,22 +13,33 @@ public class ProdEntity {
 	private String category;
 	private String subcategory;
 	private Float productRating;
-
-	public String getprodId() {
+	public String getProdId() {
 		return prodId;
 	}
 	public void setProdId(String prodId) {
 		this.prodId = prodId;
 	}
-	public String getProductName() {
-		return productName;
+	public String getProdName() {
+		return prodName;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
 	}
 	
 	public String getDescription() {
 		return description;
+	}
+	public Float getPrice() {
+		return price;
+	}
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 	public void setDescription(String description) {
 		this.description = description;
@@ -64,18 +65,6 @@ public class ProdEntity {
 	public String getSubcategory() {
 		return subcategory;
 	}
-	public Float getPrice() {
-		return price;
-	}
-	public void setPrice(Float price) {
-		this.price = price;
-	}
-	public Integer getStock() {
-		return stock;
-	}
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
@@ -85,4 +74,12 @@ public class ProdEntity {
 	public void setProductRating(Float productRating) {
 		this.productRating = productRating;
 	}
+	@Override
+	public String toString() {
+		return "ProdDTO [prodId=" + prodId + ", prodName=" + prodName + ", price=" + price + ", stock=" + stock
+				+ ", description=" + description + ", image=" + image + ", sellerId=" + sellerId + ", category="
+				+ category + ", subcategory=" + subcategory + ", productRating=" + productRating + "]";
+	}
+	
+	
 }
