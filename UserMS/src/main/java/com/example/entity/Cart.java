@@ -1,17 +1,24 @@
 package com.example.entity;
 //cart entity
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+
 import javax.persistence.Table;
 //comment1
-@Table
+@Table(name="cart")
+@Entity
+@IdClass(CompositeKey.class)
+
 public class Cart {
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="buyer_id")
+	@Id
 	private Buyer buyerId;
 	private Integer quantity;
+	@Id
+	private String prodId;
+	
 	public Buyer getBuyerId() {
 		return buyerId;
 	}
@@ -23,6 +30,12 @@ public class Cart {
 	}
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+	public String getProdId() {
+		return prodId;
+	}
+	public void setProdId(String prodId) {
+		this.prodId = prodId;
 	}
 	
 	
