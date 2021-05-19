@@ -13,14 +13,14 @@ public class ProdEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private String prodId;
 	private String prodName;
-	private float price;
+	private Float price;
 	private Integer stock;
 	private String description;
 	private String image;
 	private String sellerId;
 	private String category;
 	private String subcategory;
-	private float productRating;
+	private Float productRating;
 	public String getProdId() {
 		return prodId;
 	}
