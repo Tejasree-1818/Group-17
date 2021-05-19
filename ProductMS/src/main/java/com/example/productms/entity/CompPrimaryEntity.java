@@ -1,10 +1,16 @@
 package com.example.productms.entity;
 
+import java.io.Serializable;
 
 
-public class CompPrimaryEntity {
+
+public class CompPrimaryEntity implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String buyerId;
-	private String prodId;
+    private String prodId;
 	public String getBuyerId() {
 		return buyerId;
 	}
@@ -46,6 +52,6 @@ public class CompPrimaryEntity {
 			return false;
 		return true;
 	}
-	
-
+    
+    
 }
