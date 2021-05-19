@@ -7,14 +7,14 @@ import com.example.productms.entity.ProdEntity;
 public class ProdDTO {
     private String prodId;
 	private String prodName;
-	private float price;
-	private int stock;
+	private Float price;
+	private Integer stock;
 	private String description;
 	private String image;
 	private String sellerId;
 	private String category;
 	private String subcategory;
-	private float productRating;
+	private Float productRating;
 	public String getProdId() {
 		return prodId;
 	}
@@ -31,16 +31,16 @@ public class ProdDTO {
 	public String getDescription() {
 		return description;
 	}
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 	public void setDescription(String description) {
@@ -70,10 +70,10 @@ public class ProdDTO {
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
-	public float getProductRating() {
+	public Float getProductRating() {
 		return productRating;
 	}
-	public void setProductRating(float productRating) {
+	public void setProductRating(Float productRating) {
 		this.productRating = productRating;
 	}
 	public static ProdDTO valueOf(Optional<ProdEntity> prodEntity) {
