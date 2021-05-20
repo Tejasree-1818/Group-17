@@ -1,5 +1,7 @@
 package com.example.dto;
 
+
+
 public class BuyerDTO {
 	private String buyerId;
 	private String name;

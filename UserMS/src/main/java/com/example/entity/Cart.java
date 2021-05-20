@@ -5,10 +5,10 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 
-import javax.persistence.Table;
+//import javax.persistence.Table;
 
 @Entity
-@Table(name="cart")
+
 public class Cart{
 	@EmbeddedId
 	private CompositeKey compositekey;

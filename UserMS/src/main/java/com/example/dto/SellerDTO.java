@@ -3,12 +3,12 @@ package com.example.dto;
 
 
 public class SellerDTO {
-	
 	private String sellerId;
 	private String name;
 	private String emailId;
 	private String phoneNumber;
 	private String password;
+	//private Integer rewardPoints;
 	private String isActive;
 	
 	public String getName() {
