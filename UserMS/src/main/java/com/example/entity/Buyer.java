@@ -46,7 +46,7 @@ public void setIsActive(String isActive) {
 }
 @Column(name = "reward_points")
 private Integer rewardPoints;
-@Column(name = "is_active")
+
 private String isActive;
 
 public String getName() {
