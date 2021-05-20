@@ -1,37 +1,30 @@
 package com.example.entity;
 
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+
 
 import javax.persistence.Table;
 
 @Entity
 @Table(name="wishlist")
-@IdClass(CompositeKey.class)
+
 public class Wishlist {
 	
-	@Id
-	private Buyer buyerId;
-	@Id
-	private String prodId;
+	@EmbeddedId
+	private CompositeKey compositekey;
 
-	public Buyer getBuyerId() {
-		return buyerId;
+	public CompositeKey getCompositekey() {
+		return compositekey;
 	}
 
-	public void setBuyerId(Buyer buyerId) {
-		this.buyerId = buyerId;
+	public void setCompositekey(CompositeKey compositekey) {
+		this.compositekey = compositekey;
 	}
+	
 
-	public String getProdId() {
-		return prodId;
-	}
-
-	public void setProdId(String prodId) {
-		this.prodId = prodId;
-	}
+	
 	
 	
 

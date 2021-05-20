@@ -1,13 +1,14 @@
 package com.example.dto;
 
 public class ProductDTO {
+	
 	private String prodId;
 	private String productName;
 	private Float price;
 	private Integer stock;
 	private String description;
 	private String category;
-	private Integer sellerId;
+	private String sellerId;
 	private String subcategory;
 	private Float productRating;
 	public String getProdId() {
@@ -46,10 +47,10 @@ public class ProductDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public Integer getSellerId() {
+	public String getSellerId() {
 		return sellerId;
 	}
-	public void setSellerId(Integer sellerId) {
+	public void setSellerId(String sellerId) {
 		this.sellerId = sellerId;
 	}
 	public String getSubcategory() {
@@ -63,6 +64,12 @@ public class ProductDTO {
 	}
 	public void setProductRating(Float productRating) {
 		this.productRating = productRating;
+	}
+	@Override
+	public String toString() {
+		return "ProductDTO [prodId=" + prodId + ", productName=" + productName + ", price=" + price + ", stock=" + stock
+				+ ", description=" + description + ", category=" + category + ", sellerId=" + sellerId
+				+ ", subcategory=" + subcategory + ", productRating=" + productRating + "]";
 	}
 
 }

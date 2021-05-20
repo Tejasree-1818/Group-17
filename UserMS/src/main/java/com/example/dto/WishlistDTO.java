@@ -1,17 +1,18 @@
 package com.example.dto;
 
-import com.example.entity.Buyer;
+import com.example.entity.CompositeKey;
+import com.example.entity.Wishlist;
 
 public class WishlistDTO {
 	
-	private Buyer buyerId;
+	private String buyerId;
 	private String prodId;
 
-	public Buyer getBuyerId() {
+	public String getBuyerId() {
 		return buyerId;
 	}
 
-	public void setBuyerId(Buyer buyerId) {
+	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
 	}
 
@@ -26,13 +27,17 @@ public class WishlistDTO {
 	
 	
 	
-	@Override
-	public String toString()
-	{
-		return "WishlistDTO [buyerId=" + buyerId + ",prodId" + prodId + "]";
+//	@Override
+//	public String toString()
+//	{
+//		return "WishlistDTO [buyerId=" + buyerId + ",prodId" + prodId + "]";
+//	}
+	
+	public static Wishlist createE() {
+		Wishlist wl=new Wishlist();
+		CompositeKey v=new CompositeKey();
+		v.setProdId(wl.getCompositekey().getProdId());
+		wl.setCompositekey(v);
+		return wl;
 	}
-	
-	
-	
-
 }

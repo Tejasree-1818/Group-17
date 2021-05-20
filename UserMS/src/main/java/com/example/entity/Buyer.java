@@ -1,6 +1,4 @@
 package com.example.entity;
-
-//buyer entity
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,23 +7,42 @@ import javax.persistence.Table;
 @Entity
 @Table(name="buyer")
 public class Buyer {
-//comment2
+
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
-private Integer buyerId;
+private String buyerId;
+public String getBuyerId() {
+	return buyerId;
+}
+public void setBuyerId(String buyerId) {
+	this.buyerId = buyerId;
+}
 private String name;
 private String emailId;
 private String phoneNumber;
 private String password;
-private Boolean isPrivilaged;
-private Float rewardPoints;
-private Boolean isActive;
-public Integer getBuyerId() {
-	return buyerId;
+private String isPrivilaged;
+public String getIsPrivilaged() {
+	return isPrivilaged;
 }
-public void setBuyerId(Integer buyerId) {
-	this.buyerId = buyerId;
+public void setIsPrivilaged(String isPrivilaged) {
+	this.isPrivilaged = isPrivilaged;
 }
+public Integer getRewardPoints() {
+	return rewardPoints;
+}
+public void setRewardPoints(Integer rewardPoints) {
+	this.rewardPoints = rewardPoints;
+}
+public String getIsActive() {
+	return isActive;
+}
+public void setIsActive(String isActive) {
+	this.isActive = isActive;
+}
+private Integer rewardPoints;
+private String isActive;
+
 public String getName() {
 	return name;
 }
@@ -50,50 +67,33 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public Boolean getIsPrivilaged() {
-	return isPrivilaged;
-}
-public void setIsPrivilaged(Boolean isPrivilaged) {
-	this.isPrivilaged = isPrivilaged;
-}
-public Float getRewardPoints() {
-	return rewardPoints;
-}
-public void setRewardPoints(Float rewardPoints) {
-	this.rewardPoints = rewardPoints;
-}
-public Boolean getIsActive() {
-	return isActive;
-}
-public void setIsActive(Boolean isActive) {
-	this.isActive = isActive;
-}
-@Override
-public int hashCode()
-{
-final int prime=31;
-int result=1;
-result=prime * result +((buyerId==null) ? 0: buyerId.hashCode());
-return result;
-}
-  @Override
-  public boolean equals(Object obj)
-  {
-      if(this ==obj)
-         return true;
-      if(obj==null)
-         return false;
-      if(getClass()!=obj.getClass())
-         return false;
-      Buyer buyer= (Buyer) obj;
-      if(buyerId==null){
-         if(buyer.buyerId != null)
-              return false;
-      }
-      else if (!buyerId.equals(buyer.buyerId))
-               return false;
-      return true;
 
-}
+//@Override
+//public int hashCode()
+//{
+//final int prime=31;
+//int result=1;
+//result=prime * result +((buyerId==null) ? 0: buyerId.hashCode());
+//return result;
+//}
+//  @Override
+//  public boolean equals(Object obj)
+//  {
+//      if(this ==obj)
+//         return true;
+//      if(obj==null)
+//         return false;
+//      if(getClass()!=obj.getClass())
+//         return false;
+//      Buyer buyer= (Buyer) obj;
+//      if(buyerId==null){
+//         if(buyer.buyerId != null)
+//              return false;
+//      }
+//      else if (!buyerId.equals(buyer.buyerId))
+//               return false;
+//      return true;
+//
+//}
 
 }

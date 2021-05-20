@@ -5,13 +5,22 @@ import java.io.Serializable;
 public class CompositeKey implements Serializable{
 	
 	
+	public CompositeKey(String buyerId, String prodId) {
+		super();
+		this.buyerId = buyerId;
+		this.prodId = prodId;
+	}
+	public CompositeKey() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	private static final long serialVersionUID= 1L;
-	private Integer buyerId;
+	private String buyerId;
 	private String prodId;
-	public Integer getBuyerId() {
+	public String getBuyerId() {
 		return buyerId;
 	}
-	public void setBuyerId(Integer buyerId) {
+	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
 	}
 	public String getProdId() {

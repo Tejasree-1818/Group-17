@@ -8,152 +8,207 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dto.BuyerDTO;
+import com.example.dto.CartDTO;
 import com.example.dto.SellerDTO;
+import com.example.dto.WishlistDTO;
 import com.example.entity.Buyer;
+import com.example.entity.Cart;
+import com.example.entity.CompositeKey;
 import com.example.entity.Seller;
+import com.example.entity.Wishlist;
 import com.example.exception.UserException;
+import com.example.productms.validator.UserValidator;
 import com.example.repository.BuyerRepository;
+import com.example.repository.CartRepositoty;
 import com.example.repository.SellerRepository;
-import com.example.validator.BuyerValidator;
-import com.example.validator.SellerValidator;
+import com.example.repository.WishListRepository;
+
 
 @Service(value="userImpl")
 @Transactional
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
-	private BuyerRepository buyerRepository;
+	UserValidator v;
 	
-	@Autowired 
-	private SellerRepository sellerRepository;
+	@Autowired
+	BuyerRepository BuyerRepository;
+
+	@Autowired
+	SellerRepository sellerRepository;
 	
+	@Autowired
+	WishListRepository wishlistRepository;
+
+	@Autowired
+	CartRepositoty cartRepository;
 	@Override
-	public String registerBuyer(BuyerDTO buyer) throws UserException
-	{
-		BuyerValidator.validateBuyerRegistration(buyer);
-		if(buyerRepository.findByContactNummber(buyer.getPhoneNumber())!=null) {
-			throw new UserException("Service.BUYER_ALREDY_EXISTS");
+	public String registerBuyer(BuyerDTO buyerdto) {
+		
+		if(v.validateBuyer(buyerdto)) {
+		Buyer buyer=new Buyer();
+		buyer.setBuyerId(buyerdto.getBuyerId());
+		buyer.setEmailId(buyerdto.getEmailId());
+		buyer.setName(buyerdto.getName());
+		buyer.setPassword(buyerdto.getPassword());
+		buyer.setIsActive(buyerdto.getIsActive());
+		buyer.setPhoneNumber(buyerdto.getPhoneNumber());
+		buyer.setIsPrivilaged( buyerdto.getIsPrivilaged());
+		buyer.setRewardPoints(buyerdto.getRewardPoints());
+		System.out.println(BuyerRepository.save(buyer));
+		return buyer.getBuyerId();
+		}	
+		else return null;
+	
 		}
-	    
-		
-		Buyer buyerEntity=new Buyer();
-		buyerEntity.setBuyerId(buyer.getBuyerId());
-		buyerEntity.setPhoneNumber(buyer.getPhoneNumber());
-		buyerEntity.setEmailId(buyer.getEmailId());
-		buyerEntity.setIsActive(buyer.getIsActive());
-		buyerEntity.setIsPrivilaged(buyer.getIsPrivilaged());
-		buyerEntity.setName(buyer.getName());
-		buyerEntity.setPassword(buyer.getPassword());
-		buyerEntity.setRewardPoints(buyer.getRewardPoints());
-		buyerRepository.save(buyerEntity);
-		return buyerEntity.getName();
-		
-	}
-	
-	
+
 	@Override
-	public String registerSeller(SellerDTO seller) throws UserException
-	{
-		SellerValidator.validateSellerRegistration(seller);
-		if(sellerRepository.findByContactNummber(seller.getPhoneNumber())!=null) {
-			throw new UserException("Service.SELLER_ALREDY_EXISTS");
-		}
-	    
-		
-		Seller sellerEntity=new Seller();
-		sellerEntity.setPhoneNumber(seller.getPhoneNumber());
-		sellerEntity.setEmailId(seller.getEmailId());
-		sellerEntity.setIsActive(seller.getIsActive());
-		sellerEntity.setName(seller.getName());
-		sellerEntity.setPassword(seller.getPassword());
-		sellerEntity.setSellerId(seller.getSellerId());
-		sellerRepository.save(sellerEntity);
-		return sellerEntity.getName();
-	}
-	
-	@Override
-	public BuyerDTO buyerLogin(String email,String password)throws UserException
-	{
-		Buyer buyer =buyerRepository.findByEmailId(email);
-		if(buyer==null)
+	public String registerSeller(SellerDTO sellerdto) {
+		// TODO Auto-generated method stub
+		if(v.validateSeller(sellerdto))
 		{
+		Seller seller= new Seller();
+		seller.setSellerId(sellerdto.getSellerId());
+		seller.setEmailId(sellerdto.getEmailId());
+		seller.setName(sellerdto.getName());
+		seller.setIsActive(sellerdto.getIsActive());
+		seller.setPassword(sellerdto.getPassword());
+		seller.setPhoneNumber(sellerdto.getPhoneNumber());
+		sellerRepository.save(seller);
+		return seller.getSellerId();
+		}
+		else 
+			return null;
+	}
+
+	@Override
+	public String buyerLogin(String emailId,String password) throws UserException{
+		//System.out.println(emailId);
+		Optional<Buyer> email=BuyerRepository.findByEmailId(emailId);
+		if(email.isEmpty()){
 			throw new UserException("Service.INVALID_CREDENTIALS");
 		}
-		
-		String bPassword=buyer.getPassword();
-		if(bPassword!=null)
-			if(bPassword.equals(password))
-			{
-				BuyerDTO bDTO=new BuyerDTO();
-				bDTO.setBuyerId(buyer.getBuyerId());
-				bDTO.setPhoneNumber(buyer.getPhoneNumber());
-				bDTO.setEmailId(buyer.getEmailId());
-				bDTO.setIsActive(buyer.getIsActive());
-				bDTO.setIsPrivilaged(buyer.getIsPrivilaged());
-				bDTO.setName(buyer.getName());
-				bDTO.setPassword(buyer.getPassword());
-				bDTO.setRewardPoints(buyer.getRewardPoints());
-				return bDTO;
-				
-			}
-			else {
-				throw new UserException("Service.INVALID_CREDENTIALS");
-			}
-		else
-		{
-			throw new UserException("Service.INVALID_CREDENTIALS");
+		if(email.get().getPassword().equals(password)) {
+			BuyerDTO b=new BuyerDTO();
+			b.setEmailId(emailId);
+			b.setPassword(password);
+			b.setIsActive("Yes");
+			return "Successfully logged in";
+		   
 		}
+	    else
+			return "login unsuccessful";
+			
 	}
+
+	@Override
+	public String sellerLogin(String emailId,String password) throws UserException{
+		// TODO Auto-generated method stub
+		System.out.println(emailId);
+		Optional<Seller> emailSeller = sellerRepository.findByEmail(emailId);
+		if(emailSeller.isEmpty())
+			throw new UserException("Service.INVALID_CREDENTIALS"); 
+		if(emailSeller.get().getPassword().equals(password)) {
+		SellerDTO sellerdto=new SellerDTO();
+		sellerdto.setEmailId(emailId);
+		sellerdto.setPassword(password);
+		sellerdto.setIsActive("yes");
+		return "Successfully logged in";}else
+			return "login unsuccessful";
+
+	}
+
+	@Override
+	public String deleteBuyer(String buyerId) throws UserException{
+		// TODO Auto-generated method stub
+		Optional<Buyer> buyerDelete = BuyerRepository.findById(buyerId);
+		if(buyerDelete.isEmpty())
+			throw new UserException("Service.USER_NOT_FOUND"); 
+		BuyerRepository.deleteById(buyerId);
+		
+		return "Deleted successfully";
+	}
+
+	@Override
+	public String deleteSeller(String selId) throws UserException{
+		
+		Optional<Seller> dltSeller = sellerRepository.findById(selId);
+		if(dltSeller.isEmpty())
+			throw new UserException("Service.USER_NOT_FOUND"); 
+		sellerRepository.deleteById(selId);
+		return "Deleted successfully";
+	}
+	
 	
 	@Override
-	public SellerDTO sellerLogin(String email,String password)throws UserException
-	{
-		Seller seller =sellerRepository.findByEmailId(email);
-		if(seller==null)
-		{
-			throw new UserException("Service.INVALID_CREDENTIALS");
+	public void cart() {
+		Cart cart=new Cart();
+		CompositeKey ct=new CompositeKey();
+		ct.setProdId("P102");
+		cart.setCompositekey(ct);
+		cart.setQuantity(100);
+		cartRepository.save(cart);
+	}
+
+	@Override
+	public WishlistDTO wishlistData(String buyerId,String productId) {
+		
+		Wishlist wish=new Wishlist();
+		CompositeKey ct=new CompositeKey();
+		ct.setBuyerId(buyerId);
+		ct.setProdId(productId);
+		wish.setCompositekey(ct);;
+		wishlistRepository.save(wish);
+		WishlistDTO wishDTO=new WishlistDTO();
+		wishDTO.setBuyerId(wish.getCompositekey().getBuyerId());
+		wishDTO.setProdId(wish.getCompositekey().getProdId());
+		return wishDTO;
+	}
+	
+
+	@Override
+    public void addProductToWishList(WishlistDTO wishlistdto) {
+		Wishlist wishlist =wishlistdto.createE();
+		wishlistRepository.save(wishlist);
+	}
+
+	@Override
+	public String addToCart(CartDTO cartDTO) throws UserException{
+		
+		CompositeKey c=new CompositeKey();
+		c.setBuyerId(cartDTO.getBuyerId());
+		c.setProdId(cartDTO.getProdId());
+		Optional<Wishlist> dataProduct = wishlistRepository.findById(c);
+		try {
+			if(dataProduct.isEmpty())
+				throw new UserException("Service.USER_NOT_FOUND");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		
-		String sPassword=seller.getPassword();
-		if(sPassword!=null)
-			if(sPassword.equals(password))
-			{
-				SellerDTO sDTO=new SellerDTO();
-				sDTO.setSellerId(seller.getSellerId());
-				sDTO.setPhoneNumber(seller.getPhoneNumber());
-				sDTO.setName(seller.getName());
-				sDTO.setEmailId(seller.getEmailId());
-				sDTO.setPassword(seller.getPassword());
-				sDTO.setIsActive(seller.getIsActive());
-				return sDTO;
-				
-			}
-			else {
-				throw new UserException("Service.INVALID_CREDENTIALS");
-			}
-		else
-		{
-			throw new UserException("Service.INVALID_CREDENTIALS");
-		}
+		Cart cart=new Cart();
+		cart.setCompositekey(c);
+		cart.setQuantity(cartDTO.getQuantity());
+		cartRepository.save(cart);
+		wishlistRepository.deleteById(c);
+		return "successfully added idem to cart from wishlist";
 	}
-	
-	
-	public void deleteBuyer(Integer buyerId) throws UserException
-	{
-		Optional<Buyer> optional=buyerRepository.findById(buyerId);
-		optional.orElseThrow(()->new UserException("Service.USER_NOT_FOUND"));
-		buyerRepository.deleteById(buyerId);
-		
+
+	@Override
+	public CartDTO cartData(String buyerId, String prodId,int quantity) {
+		Cart c=new Cart();
+		CompositeKey ct=new CompositeKey();
+		ct.setBuyerId(buyerId);
+		ct.setProdId(prodId);
+		c.setCompositekey(ct);
+		c.setQuantity(quantity);
+		cartRepository.save(c);
+		CartDTO cDTO=new CartDTO();
+		cDTO.setBuyerId(c.getCompositekey().getBuyerId());
+		cDTO.setProdId(c.getCompositekey().getProdId());
+		cDTO.setQuantity(c.getQuantity());
+		return cDTO;
 	}
-	
-	public void deleteSeller(Integer sellerId) throws UserException
-	{
-		Optional<Seller> optional=sellerRepository.findById(sellerId);
-		optional.orElseThrow(()->new UserException("Service.USER_NOT_FOUND"));
-		sellerRepository.deleteById(sellerId);
-		
-	}
-	
+
 	
 	
 

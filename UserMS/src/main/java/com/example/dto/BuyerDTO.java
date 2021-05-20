@@ -1,19 +1,38 @@
 package com.example.dto;
 
 public class BuyerDTO {
-	private Integer buyerId;
+	private String buyerId;
 	private String name;
 	private String emailId;
 	private String phoneNumber;
 	private String password;
-	private Boolean isPrivilaged;
-	private Float rewardPoints;
-	private Boolean isActive;
-	public Integer getBuyerId() {
+	private String isPrivilaged;
+	private Integer rewardPoints;
+	private String isActive;
+	
+	public String getBuyerId() {
 		return buyerId;
 	}
-	public void setBuyerId(Integer buyerId) {
+	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
+	}
+	public String getIsPrivilaged() {
+		return isPrivilaged;
+	}
+	public void setIsPrivilaged(String isPrivilaged) {
+		this.isPrivilaged = isPrivilaged;
+	}
+	public Integer getRewardPoints() {
+		return rewardPoints;
+	}
+	public void setRewardPoints(Integer rewardPoints) {
+		this.rewardPoints = rewardPoints;
+	}
+	public String getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
 	}
 	public String getName() {
 		return name;
@@ -39,24 +58,7 @@ public class BuyerDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Boolean getIsPrivilaged() {
-		return isPrivilaged;
-	}
-	public void setIsPrivilaged(Boolean isPrivilaged) {
-		this.isPrivilaged = isPrivilaged;
-	}
-	public Float getRewardPoints() {
-		return rewardPoints;
-	}
-	public void setRewardPoints(Float rewardPoints) {
-		this.rewardPoints = rewardPoints;
-	}
-	public Boolean getIsActive() {
-		return isActive;
-	}
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
+	
 
 	@Override
 	public int hashCode()

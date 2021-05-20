@@ -7,15 +7,17 @@ import com.example.dto.WishlistDTO;
 import com.example.exception.UserException;
 
 public interface UserService {
-	public String registerBuyer(BuyerDTO buyer) throws UserException;
-	public String registerSeller(SellerDTO seller) throws UserException;
-	public BuyerDTO buyerLogin(String emailId,String password) throws UserException;
-	public SellerDTO sellerLogin(String emailId,String password) throws UserException;
-	public void deleteBuyer(Integer buyerId) throws UserException;
-	public void deleteSeller(Integer sellerId) throws UserException;
-//	public Integer addProductToWishList(WishlistDTO wishlist) throws UserException;
-//	public void addToCart(CartDTO cartDTO) throws UserException;
-//	public void removeCart(CartDTO cartDTO) throws UserException;
+	public String registerBuyer(BuyerDTO buyer);
+	public String registerSeller(SellerDTO seller);
+	public String buyerLogin(String emailId,String password) throws UserException;
+	public String sellerLogin(String emailId,String password) throws UserException;
+	public String deleteBuyer(String buyerId) throws UserException;
+	public String deleteSeller(String sellerId) throws UserException;
+	void cart();
+    public void addProductToWishList(WishlistDTO wishlistdto);
+    public String addToCart(CartDTO cartDTO) throws UserException;
+    public WishlistDTO wishlistData(String buyerId,String productId);
+    public CartDTO cartData(String buyerId,String prodId,int quantity); 
 	
 
 }

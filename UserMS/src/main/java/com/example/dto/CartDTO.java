@@ -1,22 +1,30 @@
 package com.example.dto;
 
-import com.example.entity.Buyer;
+
 
 public class CartDTO {
 	
-	private Buyer buyerId;
+	private String buyerId;
 	private String prodId;
+	private Integer quantity;
+	private String compositeKey;
+	public String getCompositeKey() {
+		return compositeKey;
+	}
+	public void setCompositeKey(String compositeKey) {
+		this.compositeKey = compositeKey;
+	}
 	public String getProdId() {
 		return prodId;
 	}
 	public void setProdId(String prodId) {
 		this.prodId = prodId;
 	}
-	private Integer quantity;
-	public Buyer getBuyerId() {
+	
+	public String getBuyerId() {
 		return buyerId;
 	}
-	public void setBuyerId(Buyer buyerId) {
+	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
 	}
 	public Integer getQuantity() {
@@ -27,12 +35,12 @@ public class CartDTO {
 		
 		
 	}
-	
-	@Override
-	public String toString()
-	{
-		return "CartDTO[buyerId" + buyerId +", prodId=" + prodId + ",quantity=" + quantity
-				+ "]";
-	}
+//	
+//	@Override
+//	public String toString()
+//	{
+//		return "CartDTO[buyerId" + buyerId +", prodId=" + prodId + ",quantity=" + quantity
+//				+ "]";
+//	}
 
 }
